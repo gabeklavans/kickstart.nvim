@@ -49,7 +49,7 @@ vim.opt.rtp:prepend(lazypath)
 --
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
-require('lazy').setup({
+require('lazy').setup(
   -- NOTE: First, some plugins that don't require any configuration
 
   -- Git related plugins
@@ -180,6 +180,7 @@ require('lazy').setup({
           return vim.fn.executable 'make' == 1
         end,
       },
+      'LukasPietzschmann/telescope-tabs',
     },
   },
 
@@ -303,6 +304,7 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+vim.keymap.set('n', '<leader>st', require('telescope-tabs').list_tabs, { desc = '[S]earch [T]abs' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -444,11 +446,11 @@ require('which-key').register({
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
-  -- clangd = {},
+  clangd = {},
   -- gopls = {},
-  -- pyright = {},
+  pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
+  tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   lua_ls = {
