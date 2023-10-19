@@ -267,6 +267,8 @@ vim.keymap.set("n", "<A-k>", ":m .-2<CR>==") -- move line down(n)
 -- vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv") -- move line up(v)
 -- vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv") -- move line down(v)
 
+vim.keymap.set('n', "<leader>hl", ":nohl<CR>")
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
