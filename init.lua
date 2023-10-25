@@ -44,6 +44,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local function codestats()
+  return vim.fn.CodeStatsXp()
+end
+local function codestats_err()
+  return vim.g.codestats_error
+end
+
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
 --
@@ -151,6 +158,14 @@ require('lazy').setup({
         component_separators = '|',
         section_separators = '',
       },
+      tabline = {
+        lualine_a = { codestats },
+        lualine_b = { codestats_err },
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {}
+      }
     },
   },
 
