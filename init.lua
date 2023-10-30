@@ -159,8 +159,8 @@ require('lazy').setup({
         section_separators = '',
       },
       tabline = {
-        lualine_a = { codestats },
-        lualine_b = { codestats_err },
+        lualine_a = {},
+        lualine_b = {},
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},
