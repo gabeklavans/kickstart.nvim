@@ -45,10 +45,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local function codestats()
-  return vim.fn.CodeStatsXp()
-end
-local function codestats_err()
-  return vim.g.codestats_error
+  return "C::S ".. require('codestats-nvim').get_xp_count()
 end
 
 -- NOTE: Here is where you install your plugins.
@@ -166,14 +163,14 @@ require('lazy').setup({
         component_separators = '|',
         section_separators = '',
       },
-      tabline = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = {},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = {}
-      }
+      sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'branch', 'diff', 'diagnostics'},
+        lualine_c = {'filename'},
+        lualine_x = {'encoding', 'fileformat', 'filetype', codestats },
+        lualine_y = {'progress'},
+        lualine_z = {'location'}
+      },
     },
   },
 
@@ -353,7 +350,7 @@ vim.defer_fn(function()
     ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-    auto_install = true,
+    auto_install = false,
 
     highlight = { enable = true },
     indent = { enable = true },
