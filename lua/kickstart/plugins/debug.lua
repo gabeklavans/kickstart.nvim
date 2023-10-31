@@ -20,6 +20,7 @@ return {
 
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
+    'mfussenegger/nvim-dap-python',
   },
   config = function()
     local dap = require 'dap'
@@ -39,6 +40,7 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
+        'python',
       },
     }
 
@@ -83,5 +85,14 @@ return {
 
     -- Install golang specific config
     require('dap-go').setup()
+
+    local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
+
+    local os_dir = "bin"
+    if vim.loop.os_uname().sysname == "Windows_NT" then
+      os_dir = "Scripts"
+    end
+
+    require("dap-python").setup(mason_path .. "packages/debugpy/venv/" .. os_dir .. "/python")
   end,
 }
