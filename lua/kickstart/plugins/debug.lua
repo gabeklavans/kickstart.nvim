@@ -21,6 +21,8 @@ return {
     -- Add your own debuggers here
     -- 'leoluz/nvim-dap-go',
     'mfussenegger/nvim-dap-python',
+
+    'stevearc/overseer.nvim',
   },
   config = function()
     local dap = require 'dap'
@@ -41,6 +43,7 @@ return {
         -- Update this to ensure that you have the debuggers for the langs you want
         -- 'delve',
         'python',
+        'codelldb'
       },
     }
 
@@ -88,11 +91,22 @@ return {
 
     local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
 
-    local os_dir = "bin"
+    local python_dir = "bin"
     if vim.loop.os_uname().sysname == "Windows_NT" then
-      os_dir = "Scripts"
+      python_dir = "Scripts"
     end
+    require("dap-python").setup(mason_path .. "packages/debugpy/venv/" .. python_dir .. "/python")
 
-    require("dap-python").setup(mason_path .. "packages/debugpy/venv/" .. os_dir .. "/python")
+    dap.adapters.codelldb = {
+      type = 'server',
+      port = "${port}",
+      executable = {
+        command = mason_path .. "packages/codelldb/extension/adapter/codelldb",
+        args = {"--port", "${port}"},
+      },
+      -- detached = false,
+    }
+    require('dap.ext.vscode').json_decode = require('overseer.json').decode
+    require('dap.ext.vscode').load_launchjs(nil, { lldb = {'codelldb'} })
   end,
 }
