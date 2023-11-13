@@ -22,7 +22,7 @@ return {
     -- 'leoluz/nvim-dap-go',
     'mfussenegger/nvim-dap-python',
 
-    'stevearc/overseer.nvim',
+    -- 'stevearc/overseer.nvim', -- for parsing VSCode launch.json
   },
   config = function()
     local dap = require 'dap'
@@ -43,7 +43,7 @@ return {
         -- Update this to ensure that you have the debuggers for the langs you want
         -- 'delve',
         'python',
-        'codelldb'
+        -- 'codelldb'
       },
     }
 
@@ -97,16 +97,17 @@ return {
     end
     require("dap-python").setup(mason_path .. "packages/debugpy/venv/" .. python_dir .. "/python")
 
-    dap.adapters.codelldb = {
-      type = 'server',
-      port = "${port}",
-      executable = {
-        command = mason_path .. "packages/codelldb/extension/adapter/codelldb",
-        args = {"--port", "${port}"},
-      },
-      -- detached = false,
-    }
-    require('dap.ext.vscode').json_decode = require('overseer.json').decode
-    require('dap.ext.vscode').load_launchjs(nil, { lldb = {'codelldb'} })
+    -- dap.adapters.codelldb = {
+    --   type = 'server',
+    --   port = "${port}",
+    --   executable = {
+    --     command = mason_path .. "packages/codelldb/extension/adapter/codelldb",
+    --     args = {"--port", "${port}"},
+    --   },
+    --   -- detached = false,
+    -- }
+    -- dap.adapters.lldb = dap.adapters.codelldb
+    -- require('dap.ext.vscode').json_decode = require('overseer.json').decode
+    -- require('dap.ext.vscode').load_launchjs(nil, { lldb = {'codelldb', 'cpp', 'c'} })
   end,
 }
