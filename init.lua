@@ -48,6 +48,13 @@ local function codestats()
   return "C::S ".. require('codestats-nvim').get_xp_count()
 end
 
+local function setup_debug()
+  if os.getenv('NVIM_DEBUG') == 'y' then
+    return require 'kickstart.plugins.debug'
+  else
+    return {}
+  end
+end
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
 --
@@ -221,7 +228,7 @@ require('lazy').setup({
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
   -- require 'kickstart.plugins.autoformat',
-  require 'kickstart.plugins.debug',
+  setup_debug(),
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
