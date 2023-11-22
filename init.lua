@@ -323,6 +323,13 @@ require('telescope').setup {
       },
     },
   },
+  pickers = {
+    live_grep = {
+      additional_args = function (opts)
+        return {"--hidden"}
+      end
+    }
+  }
 }
 
 -- Enable telescope fzf native, if installed
@@ -494,7 +501,7 @@ require('mason-lspconfig').setup()
 --  define the property 'filetypes' to the map in question.
 local servers = {
   clangd = {},
-  -- gopls = {},
+  gopls = {},
   pyright = {},
   rust_analyzer = {},
   tsserver = {},
