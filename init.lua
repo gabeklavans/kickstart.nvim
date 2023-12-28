@@ -261,7 +261,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 vim.o.title = true
-vim.o.titlestring = vim.fn.hostname() .. "   " .. vim.fn.expand('%') .. "   " .. vim.fn.strftime('%Y-%m-%d %H:%M', vim.fn.getftime(vim.fn.expand('%')))
+vim.o.titlestring = vim.fn.hostname() .. "   " --[[ .. vim.fn.expand('%') .. "   " ]] .. vim.fn.strftime('%Y-%m-%d %H:%M', vim.fn.getftime(vim.fn.expand('%')))
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
