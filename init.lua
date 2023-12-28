@@ -181,8 +181,21 @@ require('lazy').setup({
       sections = {
         lualine_a = {'mode'},
         lualine_b = {'branch', 'diff', 'diagnostics'},
-        lualine_c = {'filename'},
-        lualine_x = {'encoding', 'fileformat', 'filetype', codestats },
+        lualine_c = {
+          {
+            'filename',
+            file_status = true,
+            newfile_status = true,
+            path = 1,
+
+            symbols = {
+              modified = '[m]',
+              readonly = '[ro]',
+              newfile = '[n]',
+            },
+          },
+        },
+        lualine_x = {'fileformat', 'filetype', codestats },
         lualine_y = {'progress'},
         lualine_z = {'location'}
       },
