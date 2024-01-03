@@ -232,7 +232,14 @@ require('lazy').setup({
           return vim.fn.executable 'make' == 1
         end,
       },
+      {
+        'nvim-telescope/telescope-live-grep-args.nvim' ,
+        version = '^1.0.0',
+      },
     },
+    config = function ()
+      require('telescope').load_extension('live_grep_args')
+    end
   },
 
   {
@@ -324,7 +331,7 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open float
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- Misc
-vim.keymap.set('n', "<leader>n", ":nohl<CR>", { desc = 'Clear [H]ighlighting'})
+vim.keymap.set('n', "<leader>n", ":nohl<CR>", { desc = '[N] Highlighting'})
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -415,6 +422,7 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+vim.keymap.set('n', '<leader>sa', require('telescope').extensions.live_grep_args.live_grep_args, { desc = '[S]earch with [A]rgs' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
