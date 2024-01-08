@@ -69,9 +69,6 @@ require('lazy').setup({
   -- Git related plugins
   {
     'tpope/vim-fugitive',
-    keys = {
-      {'<leader>gg', ':G<cr>', '[G]it Fu[g]itive'}
-    }
   },
   'tpope/vim-rhubarb',
 
@@ -322,6 +319,9 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- Git
+vim.keymap.set('n', '<leader>gg', ':G<cr>', { desc = '[G]it Fu[g]itive' })
 
 -- Misc
 vim.keymap.set('n', "<leader>h", ":nohl<CR>", { desc = 'Clear [H]ighlighting'})
