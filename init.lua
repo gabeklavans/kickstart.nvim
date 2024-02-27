@@ -369,7 +369,6 @@ vim.keymap.set('n', '<leader>gg', ':G<cr>', { desc = '[G]it Fu[g]itive' })
 vim.opt.tabstop = 4 -- Sets the width of a tab character
 vim.opt.softtabstop = 4 -- Sets the number of spaces a tab in the text stands for
 vim.opt.shiftwidth = 4 -- Sets the number of spaces used for each step of (auto)indent
-vim.opt.expandtab = true -- Converts tabs to spaces
 
 -- Misc
 vim.keymap.set('n', "<leader>n", ":nohl<CR>", { desc = '[N] Highlighting'})
