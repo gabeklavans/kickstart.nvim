@@ -321,7 +321,7 @@ vim.o.mouse = 'a'
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+-- vim.o.clipboard = 'unnamedplus'
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -370,8 +370,11 @@ vim.opt.tabstop = 4 -- Sets the width of a tab character
 vim.opt.softtabstop = 4 -- Sets the number of spaces a tab in the text stands for
 vim.opt.shiftwidth = 4 -- Sets the number of spaces used for each step of (auto)indent
 
+-- Clipboard 
+vim.keymap.set('n', '<leader>y', '"+y', { desc = '[Y]ank to system clipboard' })
+
 -- Misc
-vim.keymap.set('n', "<leader>n", ":nohl<CR>", { desc = '[N] Highlighting'})
+vim.keymap.set('n', "<leader>n", ":nohl<CR>", { desc = '[N]o Highlighting'})
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
