@@ -346,6 +346,15 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+-- Tabs
+vim.o.tabstop = 4 -- Sets the width of a tab character
+vim.o.softtabstop = 4 -- Sets the number of spaces a tab in the text stands for
+vim.o.shiftwidth = 4 -- Sets the number of spaces used for each step of (auto)indent
+
+-- Spell
+vim.o.spelllang = 'en_us'
+vim.o.spell = true
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -365,11 +374,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- Git
 vim.keymap.set('n', '<leader>gg', ':G<cr>', { desc = '[G]it Fu[g]itive' })
 
--- Tabs
-vim.opt.tabstop = 4 -- Sets the width of a tab character
-vim.opt.softtabstop = 4 -- Sets the number of spaces a tab in the text stands for
-vim.opt.shiftwidth = 4 -- Sets the number of spaces used for each step of (auto)indent
-
 -- Splits 
 vim.keymap.set('n', '<ca-h>', '<C-w>h', { silent = true })
 vim.keymap.set('n', '<ca-j>', '<C-w>j', { silent = true })
@@ -378,6 +382,12 @@ vim.keymap.set('n', '<ca-l>', '<C-w>l', { silent = true })
 
 -- Clipboard 
 vim.keymap.set('n', '<leader>y', '"+y', { desc = '[Y]ank to system clipboard' })
+
+-- Spell
+local function toggleSpell()
+  vim.o.spell = not vim.o.spell
+end
+vim.keymap.set('n', '<leader>sc', toggleSpell, { desc = 'Toggle [S]pell[c]hecking' })
 
 -- Misc
 vim.keymap.set('n', "<leader>n", ":nohl<CR>", { desc = '[N]o Highlighting'})
