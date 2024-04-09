@@ -370,6 +370,12 @@ vim.opt.tabstop = 4 -- Sets the width of a tab character
 vim.opt.softtabstop = 4 -- Sets the number of spaces a tab in the text stands for
 vim.opt.shiftwidth = 4 -- Sets the number of spaces used for each step of (auto)indent
 
+-- Splits 
+vim.keymap.set('n', '<ca-h>', '<C-w>h', { silent = true })
+vim.keymap.set('n', '<ca-j>', '<C-w>j', { silent = true })
+vim.keymap.set('n', '<ca-k>', '<C-w>k', { silent = true })
+vim.keymap.set('n', '<ca-l>', '<C-w>l', { silent = true })
+
 -- Clipboard 
 vim.keymap.set('n', '<leader>y', '"+y', { desc = '[Y]ank to system clipboard' })
 
