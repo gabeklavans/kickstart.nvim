@@ -651,6 +651,8 @@ local servers = {
   rust_analyzer = {},
   tsserver = {},
   html = {},
+  cssls = {},
+  jinja_lsp = {},
 
   lua_ls = {
     Lua = {
