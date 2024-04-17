@@ -353,7 +353,7 @@ vim.o.shiftwidth = 4 -- Sets the number of spaces used for each step of (auto)in
 
 -- Spell
 vim.o.spelllang = 'en_us'
-vim.o.spell = true
+vim.o.spell = false
 
 -- [[ Basic Keymaps ]]
 
